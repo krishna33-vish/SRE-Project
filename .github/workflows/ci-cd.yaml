@@ -33,7 +33,7 @@ jobs:
       run: |
         cd app
         npm ci
-      working-directory: ./app
+      #working-directory: ./app
     
     - name: Run unit tests
       run: |
@@ -366,4 +366,4 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2
       if: always()
       with:
-        sarif_file: 'trivy-results.sarif'
+        sarif_file: 'trivy-results.sarif' ̑S
