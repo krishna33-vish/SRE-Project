@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: us-west-2
+  AWS_REGION: ap-south-1
   ECR_REPOSITORY: sre-demo-app
   K8S_NAMESPACE: sre-demo
 
