@@ -57,5 +57,11 @@ jobs:
       run: |
         ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
         kubectl set image deployment/sre-node-app \
-        app=$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }} \
+        app=$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG \
         -n sre-app
+
+    - name: Deploy Helm chart
+      run: |
+        helm upgrade --install sre-node-app ./sre-node-app \
+        --namespace sre-staging \
+        --set image.tag=${{ github.sha }}
