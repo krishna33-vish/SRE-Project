@@ -5,6 +5,7 @@ image:
   tag: latest
 
 service:
+  type: LoadBalancer
   port: 3000
 
 resources:
