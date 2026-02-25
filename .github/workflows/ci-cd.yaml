@@ -54,6 +54,7 @@ jobs:
 
     - name: Deploy to EKS
       run: |
+        ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
         kubectl set image deployment/sre-node-app \
-        sre-node-app=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }} \
+        app=$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }} \
         -n sre-app
