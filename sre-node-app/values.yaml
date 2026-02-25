@@ -1,0 +1,16 @@
+replicaCount: 2
+
+image:
+  repository: 226198813310.dkr.ecr.us-east-1.amazonaws.com/sre-node-app
+  tag: latest
+
+service:
+  port: 3000
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
